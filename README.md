@@ -1,6 +1,10 @@
 ### SERVIDOR DE APLICAÇÃO ###
 - wildfly-10.0.0.CR5
     - Modulo de conexão banco: resources/config/org.tar
+          - Instalação do modulo:
+                1 - Descompacte o arquivo org.tar
+                2 - cole a pasta descompactada no SERVER_LOCAL/modules/
+                
     - standalone.xml:  resources/config/standalone.xml
     
 ## BANCO DE DADOS ###
