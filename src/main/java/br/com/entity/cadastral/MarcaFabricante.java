@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @XmlRootElement
 @Table(name = "marca_fabricante", schema = "cadastral")
-@SequenceGenerator(name = "marca_fabricante_seq", sequenceName = "marca_fabricante_marca_fabricante_id_seq", allocationSize = 1, initialValue = 1)
+@SequenceGenerator(name = "marca_fabricante_seq", sequenceName = "cadastral.seq_nu_marca_fabricante", allocationSize = 1, initialValue = 1)
 public class MarcaFabricante {
     private Integer id;
     private String nome;

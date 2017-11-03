@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @XmlRootElement
 @Table(name = "unidade_medida", schema = "cadastral")
-@SequenceGenerator(name = "unidade_medida_seq", sequenceName = "unidade_medida_unidade_medida_id_seq", allocationSize = 1, initialValue = 1)
+@SequenceGenerator(name = "unidade_medida_seq", sequenceName = "cadastral.seq_nu_unidade", allocationSize = 1, initialValue = 1)
 @ApiModel(value="UnidadeMedida")
 public class UnidadeMedida {
     private Integer id;

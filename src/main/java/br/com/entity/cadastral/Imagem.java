@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @XmlRootElement
 @Table(name = "imagem", schema = "cadastral")
-@SequenceGenerator(name = "image_seq", sequenceName = "imagem_imagem_id_seq", allocationSize = 1, initialValue = 1)
+@SequenceGenerator(name = "image_seq", sequenceName = "cadastral.seq_nu_imagem", allocationSize = 1, initialValue = 1)
 @ApiModel(value="Imagem")
 public class Imagem {
     private Integer id;

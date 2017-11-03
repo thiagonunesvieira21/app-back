@@ -22,7 +22,7 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name ="acesso_historico_senha", schema = "suporte")
-@SequenceGenerator(name="seq_hist_senha", sequenceName="suporte.seq_historico_senha",initialValue=1, allocationSize=1)
+@SequenceGenerator(name="seq_hist_senha", sequenceName="suporte.seq_nu_historico_senha",initialValue=1, allocationSize=1)
 public class AcessoHistoricoSenha implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -34,7 +34,7 @@ public class AcessoHistoricoSenha implements java.io.Serializable {
 
 	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name = "id_usuario")
+	@JoinColumn(name = "nu_usuario")
 	private AcessoUsuario acessoUsuario;
 	
 	@Column(name="de_senha_anterior")

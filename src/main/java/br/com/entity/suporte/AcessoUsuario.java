@@ -14,6 +14,7 @@ import java.util.*;
  */
 @Entity
 @Table(name = "acesso_usuario", schema = "suporte", uniqueConstraints = @UniqueConstraint(columnNames = "de_login") )
+@SequenceGenerator(name="seq_acesso_usuario", sequenceName="suporte.seq_nu_acesso_usuario",initialValue=1, allocationSize=1)
 public class AcessoUsuario implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -104,7 +105,7 @@ public class AcessoUsuario implements java.io.Serializable {
 
 	@Id
 	@Column(name = "nu_usuario", unique = true, nullable = false, precision = 6, scale = 0)
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_acesso_usuario")
 	public Integer getIdUsuario() {
 		return this.idUsuario;
 	}

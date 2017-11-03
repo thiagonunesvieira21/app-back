@@ -16,7 +16,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "atributo", schema = "cadastral")
-@SequenceGenerator(name = "atributo_seq", sequenceName = "atributo_atributo_id_seq", allocationSize = 1, initialValue = 1)
+@SequenceGenerator(name = "atributo_seq", sequenceName = "cadastral.seq_nu_atributo_atributo", allocationSize = 1, initialValue = 1)
 @ApiModel(value="Atributo")
 public class Atributo implements Serializable {
     private Integer id;

@@ -4,19 +4,7 @@ package br.com.entity.suporte;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -27,6 +15,7 @@ import io.swagger.annotations.ApiModel;
  */
 @Entity
 @Table(name = "acesso_grupo", schema = "suporte")
+@SequenceGenerator(name = "acesso_grupo_seq", sequenceName = "suporte.seq_nu_acesso_grupo", allocationSize = 1, initialValue = 1)
 @ApiModel(value="AcessoGrupo")
 public class AcessoGrupo implements java.io.Serializable {
 
@@ -56,7 +45,7 @@ public class AcessoGrupo implements java.io.Serializable {
 	}
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator =  "acesso_grupo_seq")
 	@Column(name = "nu_grupo", unique = true, nullable = false, precision = 6, scale = 0)
 	public Integer getNuGrupo() {
 		return this.nuGrupo;

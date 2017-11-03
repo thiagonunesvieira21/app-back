@@ -19,7 +19,7 @@ import java.util.Set;
 @Entity
 @XmlRootElement
 @Table(name = "produto", schema = "cadastral")
-@SequenceGenerator(name = "produto_seq", sequenceName = "produto_produto_id_seq", allocationSize = 1, initialValue = 1)
+@SequenceGenerator(name = "produto_seq", sequenceName = "cadastral.seq_nu_produto", allocationSize = 1, initialValue = 1)
 @ApiModel(value="Produto")
 public class Produto implements Serializable{
     private Integer id;

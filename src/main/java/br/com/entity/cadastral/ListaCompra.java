@@ -14,7 +14,7 @@ import java.util.List;
 @Entity
 @XmlRootElement
 @Table(name = "lista_compra")
-@SequenceGenerator(name = "lista_compra_seq", sequenceName = "lista_compra_seq", allocationSize = 1, initialValue = 1)
+@SequenceGenerator(name = "lista_compra_seq", sequenceName = "cadastral.seq_nu_lista_compra", allocationSize = 1, initialValue = 1)
 public class ListaCompra implements Serializable{
 
     private Integer id;

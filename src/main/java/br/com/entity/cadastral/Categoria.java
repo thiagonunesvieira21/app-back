@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @XmlRootElement
 @Table(name = "categoria", schema = "cadastral")
-@SequenceGenerator(name = "categoria_seq", sequenceName = "categoria_categoria_id_seq", allocationSize = 1, initialValue = 1)
+@SequenceGenerator(name = "categoria_seq", sequenceName = "cadastral.seq_nu_categoria", allocationSize = 1, initialValue = 1)
 @ApiModel(value="Categoria")
 public class Categoria implements Serializable{
     private Integer id;
