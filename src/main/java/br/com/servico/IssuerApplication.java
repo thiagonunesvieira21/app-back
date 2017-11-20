@@ -33,7 +33,7 @@ public class IssuerApplication {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext cac = SpringApplication.run(IssuerApplication.class, args);
-		cac.close();
+		//cac.close();
 	}
 
 	@Bean
