@@ -53,10 +53,10 @@ public class GrupoService extends GenericService<AcessoGrupo, Integer>{
 	@SuppressWarnings("unchecked")
 	public List<AcessoGrupo> findByUsuarioId(Integer id) {
 		Query q = em.createNativeQuery("WITH RECURSIVE q AS ( "
-				+ "select distinct grupo.id_grupo, grupo.* from suporte.acesso_grupo grupo where grupo.id_grupo=grupo.id_grupo_pai"
+				+ "select distinct grupo.nu_grupo, grupo.* from suporte.acesso_grupo grupo where grupo.nu_grupo=grupo.nu_grupo_pai"
 				+ "    UNION"
-				+ "    select distinct grupo.id_grupo, grupo.* from suporte.acesso_grupo grupo inner join "
-				+ "suporte.acesso_grupo_usuario gusu on gusu.id_usuario = ? and gusu.id_grupo = grupo.id_grupo) "
+				+ "    select distinct grupo.nu_grupo, grupo.* from suporte.acesso_grupo grupo inner join "
+				+ "suporte.acesso_grupo_usuario gusu on gusu.nu_usuario = ? and gusu.nu_grupo = grupo.nu_grupo) "
 				+ "SELECT * FROM q;", AcessoGrupo.class);
 		q.setParameter(1, id);
 		List<AcessoGrupo> result = q.getResultList();

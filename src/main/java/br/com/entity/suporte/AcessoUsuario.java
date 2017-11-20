@@ -287,8 +287,8 @@ public class AcessoUsuario implements java.io.Serializable {
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinTable(name = "acesso_grupo_usuario", schema = "suporte", joinColumns = {
-			@JoinColumn(name = "id_usuario", nullable = false, updatable = false) }, inverseJoinColumns = {
-					@JoinColumn(name = "id_grupo", nullable = false, updatable = false) })
+			@JoinColumn(name = "nu_usuario", nullable = false, updatable = false) }, inverseJoinColumns = {
+					@JoinColumn(name = "nu_grupo", nullable = false, updatable = false) })
 	public List<AcessoGrupo> getAcessoGrupos() {
 		return this.acessoGrupos;
 	}
