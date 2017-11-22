@@ -1,12 +1,4 @@
-### SERVIDOR DE APLICAÇÃO ###
-- wildfly-10.0.0.CR5
-    - Modulo de conexão banco: resources/config/org.tar
-          - Instalação do modulo:
-                1 - Descompacte o arquivo org.tar
-                2 - cole a pasta descompactada no SERVER_LOCAL/modules/
-                
-    - standalone.xml:  resources/config/standalone.xml
-    
+   
 ## BANCO DE DADOS ###
 - Postgres
     - create user "app" com senha "app"
@@ -22,7 +14,7 @@ MAC Instalação/Start/Stop
     redis-server /usr/local/etc/redis.conf
 
 ### ENDEREÇO SWAGGER ###
-- http://localhost:8080/issuer/swagger-ui.html
+- http://localhost:8080/swagger-ui.html
 
 Logue com o seu nome de usuário thiago.vieira
 Sua senha provisória é 3fd4b097

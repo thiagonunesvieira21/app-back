@@ -1,12 +1,13 @@
 package br.com.util;
 
 
-import br.com.entity.suporte.AcessoUsuario;
-
-import br.com.json.bean.suporte.Login;
-import br.com.servico.WebConfig;
-import br.com.servico.security.SecurityUser;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import br.com.aluguel.WebConfig;
+import br.com.aluguel.entity.suporte.AcessoUsuario;
+import br.com.aluguel.json.bean.suporte.Login;
+import br.com.aluguel.servico.security.SecurityUser;
+
 import org.apache.http.cookie.Cookie;
 import org.junit.Before;
 import org.springframework.beans.BeanWrapper;

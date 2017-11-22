@@ -10,11 +10,11 @@ import javax.transaction.Transactional;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import br.com.servico.IssuerApplication;
+import br.com.aluguel.AluguelApplication;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@SpringBootTest(classes = IssuerApplication.class)
+@SpringBootTest(classes = AluguelApplication.class)
 @ActiveProfiles(inheritProfiles=false, profiles="test")
 @Transactional
 public @interface DefaultTestAnnotations { }

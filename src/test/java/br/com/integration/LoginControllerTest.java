@@ -1,6 +1,6 @@
 package br.com.integration;
 
-import br.com.json.bean.suporte.Login;
+import br.com.aluguel.json.bean.suporte.Login;
 import br.com.util.DefaultTestAnnotations;
 import br.com.util.IntegrationTestUtil;
 import org.junit.Test;
