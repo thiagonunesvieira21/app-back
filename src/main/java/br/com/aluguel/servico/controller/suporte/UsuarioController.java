@@ -29,17 +29,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.aluguel.entity.suporte.AcessoHistoricoSenha;
-import br.com.aluguel.entity.suporte.AcessoUsuario;
-import br.com.aluguel.exceptions.GenericServiceException;
-import br.com.aluguel.exceptions.InvalidRequestException;
-import br.com.aluguel.json.bean.suporte.CadastrarUsuario;
-import br.com.aluguel.json.bean.suporte.TrocarSenha;
-import br.com.aluguel.json.bean.suporte.UpdateUsuario;
-import br.com.aluguel.servico.controller.UtilController;
-import br.com.aluguel.servico.security.SecurityUser;
 import br.com.aluguel.servico.service.EmailService;
 import br.com.aluguel.servico.service.suporte.AcessoUsuarioService;
+import br.com.util.controller.UtilController;
+import br.com.util.entity.AcessoHistoricoSenha;
+import br.com.util.entity.AcessoUsuario;
+import br.com.util.exceptions.GenericServiceException;
+import br.com.util.exceptions.InvalidRequestException;
+import br.com.util.json.bean.CadastrarUsuario;
+import br.com.util.json.bean.TrocarSenha;
+import br.com.util.json.bean.UpdateUsuario;
+import br.com.util.security.SecurityUser;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -168,7 +168,7 @@ public class UsuarioController extends UtilController{
 	
 	@ApiOperation(value="Serviço responsável pela solicitação realizada pelo Usuário de uma nova senha provisória para a posterior alteração por motivo de esquecimento")
 	@RequestMapping(value="/esqueci-senha/{login}/{cpf}", method=RequestMethod.GET)
-	@Secured({"ROLE_MANTER_USUARIO"})
+//	@Secured({"ROLE_MANTER_USUARIO"})
 	public ResponseEntity<?> esqueciSenha(@PathVariable String login,@PathVariable  String cpf){
 		
 		AcessoUsuario userChangePw =  service.findByLogin(login); 
@@ -223,7 +223,7 @@ public class UsuarioController extends UtilController{
 	@ApiOperation(value = "Serviço responsável por buscar os usuários")
 	@RequestMapping(method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ApiImplicitParam(paramType="header", name=AUTH_HEADER_NAME, value="API Key")
-	@Secured({"ROLE_MANTER_USUARIO"})
+//	@Secured({"ROLE_MANTER_USUARIO"})
 	/*TODO CORRIGIR A DUPLICAÇÃO DO ACESSOGRUPOS NESTE SERVIÇO*/
 	public List<AcessoUsuario> get() {
 		return this.service.findAll();

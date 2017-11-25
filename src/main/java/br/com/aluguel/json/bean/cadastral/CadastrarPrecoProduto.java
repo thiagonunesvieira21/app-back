@@ -1,7 +1,8 @@
 package br.com.aluguel.json.bean.cadastral;
 
-import javax.validation.constraints.NotNull;
 import java.util.Date;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by thiago on 11/07/17.

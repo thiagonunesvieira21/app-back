@@ -9,8 +9,8 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.com.aluguel.servico.security.SecurityUser;
 import br.com.aluguel.servico.service.suporte.AcessoUsuarioService;
+import br.com.util.security.SecurityUser;
 
 @Component
 public class UsuarioCriteria {

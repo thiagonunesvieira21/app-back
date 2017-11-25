@@ -16,6 +16,9 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import br.com.util.security.TokenAuthenticationService;
+import br.com.util.security.UserService;
+
 /**
  * Created by gustavo on 31/10/15.
  */

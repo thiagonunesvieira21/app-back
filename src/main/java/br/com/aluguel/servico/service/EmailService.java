@@ -12,8 +12,8 @@ import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-import br.com.aluguel.entity.suporte.AcessoUsuario;
-import br.com.aluguel.exceptions.GenericServiceException;
+import br.com.util.entity.AcessoUsuario;
+import br.com.util.exceptions.GenericServiceException;
 
 @Service
 public class EmailService {

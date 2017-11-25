@@ -1,10 +1,11 @@
 package br.com.aluguel.entity.cadastral;
 
-import com.google.common.base.Objects;
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
-import java.io.Serializable;
+
+import com.google.common.base.Objects;
 
 /**
  * Created by thiago on 20/11/15.

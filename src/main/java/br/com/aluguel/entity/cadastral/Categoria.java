@@ -1,8 +1,5 @@
 package br.com.aluguel.entity.cadastral;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.swagger.annotations.ApiModel;
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -18,6 +15,10 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import io.swagger.annotations.ApiModel;
 
 /**
  * Created by thiago on 20/11/15.

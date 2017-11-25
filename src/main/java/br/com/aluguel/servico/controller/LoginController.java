@@ -16,9 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.aluguel.entity.suporte.AcessoUsuario;
-import br.com.aluguel.json.bean.suporte.Login;
 import br.com.aluguel.servico.service.suporte.AcessoUsuarioService;
+import br.com.util.entity.AcessoUsuario;
+import br.com.util.json.bean.Login;
+import br.com.util.security.Token;
 import io.swagger.annotations.ApiOperation;
 
 @RestController

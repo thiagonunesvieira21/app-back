@@ -20,18 +20,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.aluguel.entity.suporte.AcessoFuncionalidade;
-import br.com.aluguel.entity.suporte.AcessoGrupo;
-import br.com.aluguel.entity.suporte.AcessoGrupoFuncionalidade;
-import br.com.aluguel.entity.suporte.AcessoGrupoFuncionalidadeId;
-import br.com.aluguel.exceptions.InvalidRequestException;
-import br.com.aluguel.json.bean.suporte.FuncionalidadePropagavel;
-import br.com.aluguel.json.bean.suporte.VincularGrupoFuncionalidade;
-import br.com.aluguel.servico.controller.UtilController;
-import br.com.aluguel.servico.security.SecurityUser;
 import br.com.aluguel.servico.service.suporte.AcessoFuncionalidadeService;
 import br.com.aluguel.servico.service.suporte.GrupoFuncionalidadeService;
 import br.com.aluguel.servico.service.suporte.GrupoService;
+import br.com.util.controller.UtilController;
+import br.com.util.entity.AcessoFuncionalidade;
+import br.com.util.entity.AcessoGrupo;
+import br.com.util.entity.AcessoGrupoFuncionalidade;
+import br.com.util.entity.AcessoGrupoFuncionalidadeId;
+import br.com.util.exceptions.InvalidRequestException;
+import br.com.util.json.bean.FuncionalidadePropagavel;
+import br.com.util.json.bean.VincularGrupoFuncionalidade;
+import br.com.util.security.SecurityUser;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 

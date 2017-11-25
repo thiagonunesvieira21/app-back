@@ -1,6 +1,6 @@
 package br.com.aluguel.servico.service.suporte;
 
-import static br.com.aluguel.servico.util.MyHibernateUtils.listAndCast;
+import static br.com.util.utilities.MyHibernateUtils.listAndCast;
 
 import java.util.List;
 
@@ -17,16 +17,16 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import br.com.aluguel.entity.suporte.AcessoUsuario;
 import br.com.aluguel.servico.criteria.UsuarioCriteria;
-import br.com.aluguel.servico.repository.suporte.AcessoUsuarioRepository;
-import br.com.aluguel.servico.security.SecurityUser;
-import br.com.aluguel.servico.security.TokenAuthenticationService;
-import br.com.aluguel.servico.security.UserAuthentication;
-import br.com.aluguel.servico.security.UserService;
 import br.com.aluguel.servico.service.EmailService;
 import br.com.aluguel.servico.service.GenericService;
-import br.com.aluguel.servico.util.StatusUsuario;
+import br.com.util.entity.AcessoUsuario;
+import br.com.util.enums.StatusUsuario;
+import br.com.util.repository.AcessoUsuarioRepository;
+import br.com.util.security.SecurityUser;
+import br.com.util.security.TokenAuthenticationService;
+import br.com.util.security.UserAuthentication;
+import br.com.util.security.UserService;
 
 @Service
 public class AcessoUsuarioService extends GenericService<AcessoUsuario, Integer>{

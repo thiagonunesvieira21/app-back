@@ -1,15 +1,16 @@
 package br.com.aluguel.servico.criteria;
 
+import java.util.Date;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
 import br.com.aluguel.entity.cadastral.PrecoProduto;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import java.util.Date;
 
 /**
  * Created by thiago on 11/07/17.

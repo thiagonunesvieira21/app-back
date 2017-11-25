@@ -1,6 +1,6 @@
 package br.com.aluguel.servico.service.suporte;
 
-import static br.com.aluguel.servico.util.MyHibernateUtils.listAndCast;
+import static br.com.util.utilities.MyHibernateUtils.listAndCast;
 
 import java.util.List;
 
@@ -12,10 +12,10 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.aluguel.entity.suporte.AcessoGrupo;
 import br.com.aluguel.servico.criteria.UsuarioCriteria;
-import br.com.aluguel.servico.repository.suporte.AcessoGrupoRepository;
 import br.com.aluguel.servico.service.GenericService;
+import br.com.util.entity.AcessoGrupo;
+import br.com.util.repository.AcessoGrupoRepository;
 
 @Service
 public class GrupoService extends GenericService<AcessoGrupo, Integer>{

@@ -1,7 +1,14 @@
 package br.com.aluguel.servico.controller.cadastral;
 
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
+import static br.com.util.utilities.CodigoProduto.getCodigo;
+
+import java.util.HashMap;
+import java.util.HashSet;
+
+import javax.persistence.NoResultException;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,29 +17,27 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import br.com.aluguel.entity.cadastral.Atributo;
 import br.com.aluguel.entity.cadastral.Imagem;
 import br.com.aluguel.entity.cadastral.Produto;
-import br.com.aluguel.exceptions.InvalidRequestException;
 import br.com.aluguel.json.bean.cadastral.AtributoProduto;
 import br.com.aluguel.json.bean.cadastral.CadastrarProduto;
 import br.com.aluguel.json.bean.cadastral.ImagemProduto;
-import br.com.aluguel.servico.controller.UtilController;
-import br.com.aluguel.servico.security.SecurityUser;
 import br.com.aluguel.servico.service.cadastral.AtributoService;
 import br.com.aluguel.servico.service.cadastral.ImagemService;
 import br.com.aluguel.servico.service.cadastral.ProdutoService;
-
-import javax.persistence.NoResultException;
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-
-import static br.com.aluguel.servico.util.CodigoProduto.getCodigo;
-
-import java.util.HashMap;
-import java.util.HashSet;
+import br.com.util.controller.UtilController;
+import br.com.util.exceptions.InvalidRequestException;
+import br.com.util.security.SecurityUser;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * Created by thiago on 29/06/17.

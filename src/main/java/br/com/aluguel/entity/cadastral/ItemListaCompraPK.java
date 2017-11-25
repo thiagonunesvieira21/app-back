@@ -1,10 +1,9 @@
 package br.com.aluguel.entity.cadastral;
 
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
 
 /**
  * Created by thiago on 29/12/15.

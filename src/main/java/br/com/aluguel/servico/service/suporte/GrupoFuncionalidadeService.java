@@ -5,12 +5,12 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.aluguel.entity.suporte.AcessoFuncionalidade;
-import br.com.aluguel.entity.suporte.AcessoGrupo;
-import br.com.aluguel.entity.suporte.AcessoGrupoFuncionalidade;
-import br.com.aluguel.entity.suporte.AcessoGrupoFuncionalidadeId;
-import br.com.aluguel.servico.repository.suporte.AcessoGrupoFuncionalidadeRepository;
 import br.com.aluguel.servico.service.GenericService;
+import br.com.util.entity.AcessoFuncionalidade;
+import br.com.util.entity.AcessoGrupo;
+import br.com.util.entity.AcessoGrupoFuncionalidade;
+import br.com.util.entity.AcessoGrupoFuncionalidadeId;
+import br.com.util.repository.AcessoGrupoFuncionalidadeRepository;
 
 @Service
 public class GrupoFuncionalidadeService extends GenericService<AcessoGrupoFuncionalidade, AcessoGrupoFuncionalidadeId> {

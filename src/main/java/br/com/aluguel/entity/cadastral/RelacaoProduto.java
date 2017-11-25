@@ -1,8 +1,14 @@
 package br.com.aluguel.entity.cadastral;
 
-import io.swagger.annotations.ApiModel;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-import javax.persistence.*;
+import io.swagger.annotations.ApiModel;
 
 /**
  * Created by thiago on 20/11/15.

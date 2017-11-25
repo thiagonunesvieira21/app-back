@@ -21,13 +21,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.aluguel.entity.suporte.AcessoGrupo;
-import br.com.aluguel.exceptions.InvalidRequestException;
-import br.com.aluguel.json.bean.suporte.CadastrarGrupo;
-import br.com.aluguel.servico.controller.UtilController;
-import br.com.aluguel.servico.security.SecurityUser;
 import br.com.aluguel.servico.service.suporte.AcessoUsuarioService;
 import br.com.aluguel.servico.service.suporte.GrupoService;
+import br.com.util.controller.UtilController;
+import br.com.util.entity.AcessoGrupo;
+import br.com.util.exceptions.InvalidRequestException;
+import br.com.util.json.bean.CadastrarGrupo;
+import br.com.util.security.SecurityUser;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 

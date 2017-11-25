@@ -1,13 +1,14 @@
 package br.com.aluguel.entity.cadastral;
 
-import com.google.common.base.Objects;
+import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import java.io.Serializable;
-import java.util.Date;
+
+import com.google.common.base.Objects;
 
 /**
  * Created by thiago on 11/07/17.

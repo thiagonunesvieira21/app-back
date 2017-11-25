@@ -14,12 +14,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.GenericFilterBean;
 
+import br.com.util.security.TokenAuthenticationService;
+
 public class StatelessAuthenticationFilter extends GenericFilterBean {
 
-	private final TokenAuthenticationService authenticationService;
+	private final TokenAuthenticationService tokenAuthenticationService;
 
 	public StatelessAuthenticationFilter(TokenAuthenticationService authenticationService){
-		this.authenticationService = authenticationService;
+		this.tokenAuthenticationService = authenticationService;
 	}
 
 	@Override
@@ -34,7 +36,7 @@ public class StatelessAuthenticationFilter extends GenericFilterBean {
 			SecurityContextHolder.getContext().setAuthentication(null);
 			return;
 		} else{
-			Authentication authentication = authenticationService.getAuthentication(httpRequest);
+			Authentication authentication = tokenAuthenticationService.getAuthentication(httpRequest);
 			if(authentication != null) {
 				SecurityContextHolder.getContext().setAuthentication(authentication);
 				filterChain.doFilter(request, response);
