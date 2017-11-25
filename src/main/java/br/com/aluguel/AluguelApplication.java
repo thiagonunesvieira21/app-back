@@ -5,7 +5,6 @@ import static springfox.documentation.builders.PathSelectors.regex;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -23,11 +22,11 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger.web.UiConfiguration;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = {"br.com.servico.repository.suporte",
-		"br.com.servico.repository.cadastral"})
-@EntityScan(basePackages = {"br.com.entity", "br.com.servico.controller"}, basePackageClasses=Jsr310JpaConverters.class)
+@EnableJpaRepositories(basePackages = {"br.com.aluguel.servico.repository.suporte",
+		"br.com.aluguel.servico.repository.cadastral"})
+@EntityScan(basePackages = {"br.com.aluguel.entity", "br.com.aluguel.servico.controller"}, basePackageClasses=Jsr310JpaConverters.class)
 @EnableTransactionManagement
 @EnableSwagger2
 @EnableAsync
