@@ -1,5 +1,5 @@
 server:
-  port: ${PORT:8080}
+  port: ${PORT:9090}
   
 spring:  
   application:
@@ -25,7 +25,11 @@ spring:
           starttls:
             enable: true
         ssl:
-          trust: true  
+          trust: true
+  redis:
+    host: localhost
+    password: secret
+    port: 6379
  
 eureka:
   client:
