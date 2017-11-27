@@ -28,7 +28,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @Import(SharedConfigurationReference.class)
 @EnableJpaRepositories(basePackages = {"br.com.aluguel.servico.repository.cadastral"})
-@EntityScan(basePackages = {"br.com.aluguel.entity", "br.com.aluguel.servico.controller"}, basePackageClasses=Jsr310JpaConverters.class)
+@EntityScan(basePackages = {"br.com.aluguel.entity"}, basePackageClasses=Jsr310JpaConverters.class)
 @EnableTransactionManagement
 @EnableSwagger2
 @EnableAsync
