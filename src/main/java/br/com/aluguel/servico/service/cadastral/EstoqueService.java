@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import br.com.aluguel.entity.cadastral.Estoque;
 import br.com.aluguel.entity.cadastral.EstoquePK;
 import br.com.aluguel.servico.repository.cadastral.EstoqueRepository;
-import br.com.aluguel.servico.service.GenericService;
+import br.com.util.service.GenericService;
 
 /**
  * Created by thiago on 01/07/17.
