@@ -25,6 +25,9 @@ public class CadastrarCategoria {
     @NotNull
     @Size(max = 1)
     private String tipo;
+    
+    @ApiModelProperty
+    private Integer idCategoriaPai;
 
     public CadastrarCategoria() {
     }
@@ -49,4 +52,13 @@ public class CadastrarCategoria {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+	public Integer getIdCategoriaPai() {
+		return idCategoriaPai;
+	}
+
+	public void setIdCategoriaPai(Integer idCategoriaPai) {
+		this.idCategoriaPai = idCategoriaPai;
+	}
+    
 }

@@ -8,7 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
-import br.com.aluguel.entity.cadastral.Imagem;
+import br.com.aluguel.entity.cadastral.aluguel.Imagem;
 
 /**
  * Created by thiago on 30/06/17.
@@ -36,7 +36,7 @@ public class ImagemCriteria {
         return criteria;
     }
 
-    public void setProduto(Integer idProduto){
-        this.criteria.add(Restrictions.eq("idProduto", idProduto));
+    public void setAnuncio(Integer idAnuncio){
+        this.criteria.add(Restrictions.eq("idAnuncio", idAnuncio));
     }
 }

@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.aluguel.entity.cadastral.Atributo;
-import br.com.aluguel.entity.cadastral.Imagem;
-import br.com.aluguel.json.bean.cadastral.ImagemProduto;
+import br.com.aluguel.entity.cadastral.aluguel.Atributo;
+import br.com.aluguel.entity.cadastral.aluguel.Imagem;
+import br.com.aluguel.json.bean.cadastral.ImagemAnuncio;
 import br.com.aluguel.servico.service.cadastral.ImagemService;
 import br.com.util.controller.UtilController;
 import br.com.util.exceptions.InvalidRequestException;
@@ -44,11 +44,11 @@ public class ImagemController extends UtilController {
     @Autowired
     private ImagemService service;
     
-    @ApiOperation(value = "Serviço responsável por atualizar a imagem do produto")
+    @ApiOperation(value = "Serviço responsável por atualizar a imagem do anuncio")
     @ApiImplicitParam(paramType = "header", name = AUTH_HEADER_NAME, value = "API Key")
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @Secured({ "ROLE_MANTER_IMAGEM" })
-    public ResponseEntity<?> update(@RequestBody @Valid ImagemProduto model, @PathVariable Integer id,
+    public ResponseEntity<?> update(@RequestBody @Valid ImagemAnuncio model, @PathVariable Integer id,
                                     BindingResult result) {
 
         if (result.hasErrors()) {
@@ -83,14 +83,14 @@ public class ImagemController extends UtilController {
         service.delete(id);
     }
 
-    @ApiOperation(value = "Buscar imagens pelo ID do produto", response = Imagem.class, notes = "Retorna todas as imagens a partir do ID do produto especificado", responseContainer = "List")
+    @ApiOperation(value = "Buscar imagens pelo ID do anuncio", response = Imagem.class, notes = "Retorna todas as imagens a partir do ID do anuncio especificado", responseContainer = "List")
     @ApiImplicitParam(paramType = "header", name = AUTH_HEADER_NAME, value = "API Key")
-    @RequestMapping(value = "/produto/{idProduto}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Set<Imagem> getByIdProduto(@PathVariable Integer idProduto) {
-        return new HashSet<Imagem>(service.findByProduto(idProduto));
+    @RequestMapping(value = "/anuncio/{idAnuncio}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Set<Imagem> getByIdProduto(@PathVariable Integer idAnuncio) {
+        return new HashSet<Imagem>(service.findByAnuncio(idAnuncio));
     }
 
-    private Imagem prepareImagem(ImagemProduto model, Imagem imagem) {
+    private Imagem prepareImagem(ImagemAnuncio model, Imagem imagem) {
 
         SecurityUser user = getAthenticatedUser(session);
 

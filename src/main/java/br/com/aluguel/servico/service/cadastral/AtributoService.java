@@ -8,7 +8,7 @@ import org.hibernate.Criteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.aluguel.entity.cadastral.Atributo;
+import br.com.aluguel.entity.cadastral.aluguel.Atributo;
 import br.com.aluguel.servico.criteria.AtributoCriteria;
 import br.com.aluguel.servico.repository.cadastral.AtributoRepository;
 import br.com.util.service.GenericService;
@@ -27,9 +27,9 @@ public class AtributoService extends GenericService<Atributo, Integer> {
         super(repository);
     }
 
-    public List<Atributo> findByProduto(Integer idProduto){
+    public List<Atributo> findByAnuncio(Integer idAnuncio){
         Criteria criteria = atributoCriteria.getAtributoCriteria();
-        atributoCriteria.setProduto(idProduto);
+        atributoCriteria.setAnuncio(idAnuncio);
 
         return listAndCast(criteria);
     }

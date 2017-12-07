@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.aluguel.entity.cadastral.Atributo;
-import br.com.aluguel.json.bean.cadastral.AtributoProduto;
+import br.com.aluguel.entity.cadastral.aluguel.Atributo;
+import br.com.aluguel.json.bean.cadastral.AtributoAnuncio;
 import br.com.aluguel.servico.service.cadastral.AtributoService;
 import br.com.util.controller.UtilController;
 import br.com.util.exceptions.InvalidRequestException;
@@ -43,11 +43,11 @@ public class AtributoController extends UtilController {
     @Autowired
     private AtributoService service;
     
-    @ApiOperation(value = "Serviço responsável por atualizar o atributo do produto")
+    @ApiOperation(value = "Serviço responsável por atualizar o atributo do anuncio")
     @ApiImplicitParam(paramType = "header", name = AUTH_HEADER_NAME, value = "API Key")
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @Secured({ "ROLE_MANTER_ATRIBUTO" })
-    public ResponseEntity<?> update(@RequestBody @Valid AtributoProduto model, @PathVariable Integer id,
+    public ResponseEntity<?> update(@RequestBody @Valid AtributoAnuncio model, @PathVariable Integer id,
                                     BindingResult result) {
 
         if (result.hasErrors()) {
@@ -82,14 +82,14 @@ public class AtributoController extends UtilController {
         service.delete(id);
     }
 
-    @ApiOperation(value = "Buscar atributos pelo ID do produto", response = Atributo.class, notes = "Retorna todos os atributos a partir do ID do produto especificado", responseContainer = "List")
+    @ApiOperation(value = "Buscar atributos pelo ID do anuncio", response = Atributo.class, notes = "Retorna todos os atributos a partir do ID do anuncio especificado", responseContainer = "List")
     @ApiImplicitParam(paramType = "header", name = AUTH_HEADER_NAME, value = "API Key")
-    @RequestMapping(value = "/produto/{idProduto}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Set<Atributo> getByIdProduto(@PathVariable Integer idProduto) {
-        return new HashSet<Atributo>(service.findByProduto(idProduto));
+    @RequestMapping(value = "/anuncio/{idAnuncio}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Set<Atributo> getByIdProduto(@PathVariable Integer idAnuncio) {
+        return new HashSet<Atributo>(service.findByAnuncio(idAnuncio));
     }
 
-    private Atributo prepareAtributo(AtributoProduto model, Atributo atributo) {
+    private Atributo prepareAtributo(AtributoAnuncio model, Atributo atributo) {
 
         SecurityUser user = getAthenticatedUser(session);
 

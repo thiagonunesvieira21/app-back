@@ -8,13 +8,13 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
-import br.com.aluguel.entity.cadastral.aluguel.Atributo;
+import br.com.aluguel.entity.cadastral.aluguel.Categoria;
 
 /**
  * Created by thiago on 30/06/17.
  */
 @Component
-public class AtributoCriteria {
+public class CategoriaCriteria {
 
     @PersistenceContext
     EntityManager em;
@@ -29,14 +29,14 @@ public class AtributoCriteria {
         return em.unwrap(Session.class);
     }
 
-    public Criteria getAtributoCriteria() {
+    public Criteria getCategoriaCriteria() {
 
-        this.criteria = getCriteria(Atributo.class);
+        this.criteria = getCriteria(Categoria.class);
 
         return criteria;
     }
 
-    public void setAnuncio(Integer idAnuncio){
-        this.criteria.add(Restrictions.eq("idAnuncio", idAnuncio));
+    public void setCategoriaPai(Integer idCategoriaPai){
+        this.criteria.add(Restrictions.eq("idCategoriaPai", idCategoriaPai));
     }
 }

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.aluguel.entity.cadastral.Categoria;
+import br.com.aluguel.entity.cadastral.aluguel.Categoria;
 import br.com.aluguel.json.bean.cadastral.CadastrarCategoria;
 import br.com.aluguel.servico.service.cadastral.CategoriaService;
 import br.com.util.controller.UtilController;
@@ -99,6 +99,13 @@ public class CategoriaController extends UtilController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Categoria getById(@PathVariable Integer id) {
         return service.findById(id);
+    }
+    
+    @ApiOperation(value = "Buscar categoria pelo pai", response = Categoria.class, notes = "Retorna as categorias a partir do ID do pai especificado", responseContainer = "List")
+    @ApiImplicitParam(paramType = "header", name = AUTH_HEADER_NAME, value = "API Key")
+    @RequestMapping(value = "/{idCategoriaPai}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Set<Categoria> getByIdCategoriaPai(@PathVariable Integer idCategoriaPai) {
+        return new HashSet<Categoria>(service.findByIdCategoriaPai(idCategoriaPai));
     }
 
     private Categoria prepareCategoria(CadastrarCategoria model, Categoria categoria) {

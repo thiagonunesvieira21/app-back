@@ -8,7 +8,7 @@ import org.hibernate.Criteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.aluguel.entity.cadastral.Imagem;
+import br.com.aluguel.entity.cadastral.aluguel.Imagem;
 import br.com.aluguel.servico.criteria.ImagemCriteria;
 import br.com.aluguel.servico.repository.cadastral.ImagemRepository;
 import br.com.util.service.GenericService;
@@ -27,9 +27,9 @@ public class ImagemService extends GenericService<Imagem, Integer> {
         super(repository);
     }
 
-    public List<Imagem> findByProduto(Integer idProduto){
+    public List<Imagem> findByAnuncio(Integer idAnuncio){
         Criteria criteria = imagemCriteria.getImagemCriteria();
-        imagemCriteria.setProduto(idProduto);
+        imagemCriteria.setAnuncio(idAnuncio);
 
         return listAndCast(criteria);
     }
