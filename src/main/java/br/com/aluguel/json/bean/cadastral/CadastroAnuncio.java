@@ -17,26 +17,32 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(value = "anuncio")
 public class CadastroAnuncio {
 
-    @ApiModelProperty(required=true)
-    @NotEmpty
-    @NotNull
-    @Size(max = 255)
-    private String deAnuncio;
+	@ApiModelProperty(required = true)
+	@NotEmpty
+	@NotNull
+	@Size(max = 255)
+	private String deAnuncio, coMunicipio;
 
-    @ApiModelProperty(required=true)
-    @NotNull
-    private BigDecimal vrUnitario;
+	@ApiModelProperty(required = true)
+	@NotEmpty
+	@NotNull
+	@Size(max = 2)
+	private String coUf;
 
-    private Set<AtributoAnuncio> atributos;
+	@ApiModelProperty(required = true)
+	@NotNull
+	private BigDecimal vrUnitario;
 
-    private Set<ImagemAnuncio> imagems;
+	private Set<AtributoAnuncio> atributos;
 
-    @ApiModelProperty(required=true)
-    @NotNull
-    private Integer qtDisponivel, idLocador, idSituacao, idCategoria;
+	private Set<ImagemAnuncio> imagems;
 
-    public CadastroAnuncio() {
-    }
+	@ApiModelProperty(required = true)
+	@NotNull
+	private Integer qtDisponivel, idLocador, idSituacao, idCategoria;
+
+	public CadastroAnuncio() {
+	}
 
 	public String getDeAnuncio() {
 		return deAnuncio;
@@ -101,5 +107,21 @@ public class CadastroAnuncio {
 	public void setIdCategoria(Integer idCategoria) {
 		this.idCategoria = idCategoria;
 	}
-    
+
+	public String getCoUf() {
+		return coUf;
+	}
+
+	public void setCoUf(String coUf) {
+		this.coUf = coUf;
+	}
+
+	public String getCoMunicipio() {
+		return coMunicipio;
+	}
+
+	public void setCoMunicipio(String coMunicipio) {
+		this.coMunicipio = coMunicipio;
+	}
+
 }

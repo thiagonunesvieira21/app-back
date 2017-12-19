@@ -1,15 +1,11 @@
 package br.com.aluguel.servico.service.cadastral;
 
-import static br.com.util.utilities.MyHibernateUtils.listAndCast;
-
-import java.util.List;
-
-import org.hibernate.Criteria;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import br.com.aluguel.entity.cadastral.aluguel.Imagem;
-import br.com.aluguel.servico.criteria.ImagemCriteria;
 import br.com.aluguel.servico.repository.cadastral.ImagemRepository;
 import br.com.util.service.GenericService;
 
@@ -19,19 +15,17 @@ import br.com.util.service.GenericService;
 @Service
 public class ImagemService extends GenericService<Imagem, Integer> {
 
-    @Autowired
-    ImagemCriteria imagemCriteria;
 
+	private ImagemRepository repository;
+	
     @Autowired
     public ImagemService(ImagemRepository repository) {
         super(repository);
+        this.repository = repository;
     }
 
-    public List<Imagem> findByAnuncio(Integer idAnuncio){
-        Criteria criteria = imagemCriteria.getImagemCriteria();
-        imagemCriteria.setAnuncio(idAnuncio);
-
-        return listAndCast(criteria);
+    public Page<Imagem> findByIdAnuncio(Integer idAnuncio, int page, int size){
+    	return repository.findByIdAnuncio(idAnuncio, new PageRequest(page, size));
     }
 
 }

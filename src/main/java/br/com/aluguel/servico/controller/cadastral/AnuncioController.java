@@ -26,8 +26,8 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.aluguel.entity.cadastral.aluguel.Anuncio;
 import br.com.aluguel.entity.cadastral.aluguel.Atributo;
 import br.com.aluguel.entity.cadastral.aluguel.Imagem;
-import br.com.aluguel.json.bean.cadastral.CadastroAnuncio;
 import br.com.aluguel.json.bean.cadastral.AtributoAnuncio;
+import br.com.aluguel.json.bean.cadastral.CadastroAnuncio;
 import br.com.aluguel.json.bean.cadastral.ImagemAnuncio;
 import br.com.aluguel.servico.service.cadastral.AnuncioService;
 import br.com.aluguel.servico.service.cadastral.AtributoService;
@@ -115,7 +115,35 @@ public class AnuncioController extends UtilController {
     public Anuncio getById(@PathVariable Integer id) {
         return service.findById(id);
     }
+    
+    @ApiOperation(value = "Buscar anuncio pela categoria", response = Anuncio.class, notes = "Retorna o anuncio a partir da categoria especificada")
+    @ApiImplicitParam(paramType = "header", name = AUTH_HEADER_NAME, value = "API Key")
+    @RequestMapping(value = "/{idCategoria}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Page<Anuncio> getByIdCategotia(@PathVariable Integer idCategoria, @RequestParam("page") int page, @RequestParam("size") int size) {
+        return service.findByIdCategoria(idCategoria, page, size);
+    }
+    
+    @ApiOperation(value = "Buscar anuncio pela UF", response = Anuncio.class, notes = "Retorna o anuncio a partir da UF especificada")
+    @ApiImplicitParam(paramType = "header", name = AUTH_HEADER_NAME, value = "API Key")
+    @RequestMapping(value = "/{coUf}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Page<Anuncio> getByCoUf(@PathVariable String coUf, @RequestParam("page") int page, @RequestParam("size") int size) {
+        return service.findByCoUf(coUf, page, size);
+    }
+    
+    @ApiOperation(value = "Buscar anuncio pelo municipio", response = Anuncio.class, notes = "Retorna o anuncio a partir do municipio")
+    @ApiImplicitParam(paramType = "header", name = AUTH_HEADER_NAME, value = "API Key")
+    @RequestMapping(value = "/{coMunicipio}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Page<Anuncio> getByCoMunicipio(@PathVariable String coMunicipio, @RequestParam("page") int page, @RequestParam("size") int size) {
+        return service.findByCoMunicipio(coMunicipio, page, size);
+    }
 
+    @ApiOperation(value = "Buscar anuncio pela situacao", response = Anuncio.class, notes = "Retorna o anuncio a partir da situacao")
+    @ApiImplicitParam(paramType = "header", name = AUTH_HEADER_NAME, value = "API Key")
+    @RequestMapping(value = "/{idSituacao}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Page<Anuncio> getBySituacao(@PathVariable Integer idSituacao, @RequestParam("page") int page, @RequestParam("size") int size) {
+        return service.findByIdSituacao(idSituacao, page, size);
+    }
+    
     private Anuncio prepareAnuncio(CadastroAnuncio model, Anuncio anuncio) {
 
         SecurityUser user = getAthenticatedUser(session);

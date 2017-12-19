@@ -50,6 +50,7 @@ public class Locatario implements Serializable {
 	@JoinColumn(name = "nu_usuario", nullable=false, foreignKey=@ForeignKey(name="fk_locatario_usuario"))
 	private AcessoUsuario acessoUsuario;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="locatario")
 	private Set<Pergunta> pergunta;
 	

@@ -1,8 +1,6 @@
 package br.com.aluguel.servico.controller.cadastral;
 
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.NoResultException;
 import javax.servlet.http.HttpSession;
@@ -10,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.aluguel.entity.cadastral.aluguel.Atributo;
@@ -42,6 +42,21 @@ public class AtributoController extends UtilController {
 
     @Autowired
     private AtributoService service;
+    
+    @ApiOperation(value = "Serviço responsável por cadastrar o atributo do anuncio")
+    @ApiImplicitParam(paramType = "header", name = AUTH_HEADER_NAME, value = "API Key")
+    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @Secured({ "ROLE_MANTER_ATRIBUTO" })
+    public ResponseEntity<?> update(@RequestBody @Valid AtributoAnuncio model, BindingResult result) {
+        Atributo atributo = new Atributo();
+
+        atributo = prepareAtributo(model, atributo);
+
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("msg", "Atributo cadastrado com sucesso");
+        map.put("id", atributo.getId());
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
     
     @ApiOperation(value = "Serviço responsável por atualizar o atributo do anuncio")
     @ApiImplicitParam(paramType = "header", name = AUTH_HEADER_NAME, value = "API Key")
@@ -85,8 +100,8 @@ public class AtributoController extends UtilController {
     @ApiOperation(value = "Buscar atributos pelo ID do anuncio", response = Atributo.class, notes = "Retorna todos os atributos a partir do ID do anuncio especificado", responseContainer = "List")
     @ApiImplicitParam(paramType = "header", name = AUTH_HEADER_NAME, value = "API Key")
     @RequestMapping(value = "/anuncio/{idAnuncio}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Set<Atributo> getByIdProduto(@PathVariable Integer idAnuncio) {
-        return new HashSet<Atributo>(service.findByAnuncio(idAnuncio));
+    public Page<Atributo> getByIdProduto(@PathVariable Integer idAnuncio, @RequestParam("page") int page, @RequestParam("size") int size) {
+        return service.findByAnuncio(idAnuncio, page, size);
     }
 
     private Atributo prepareAtributo(AtributoAnuncio model, Atributo atributo) {

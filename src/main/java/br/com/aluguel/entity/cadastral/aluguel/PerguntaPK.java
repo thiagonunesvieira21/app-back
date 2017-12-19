@@ -22,6 +22,14 @@ public class PerguntaPK implements Serializable{
     @Column(name = "nu_locatario", nullable = false, insertable = true, updatable = true)
 	private Integer idLocatario;
 
+    
+	public PerguntaPK(Date dhPergunta, Integer idAnuncio, Integer idLocatario) {
+		super();
+		this.dhPergunta = dhPergunta;
+		this.idAnuncio = idAnuncio;
+		this.idLocatario = idLocatario;
+	}
+
 	public Date getDhPergunta() {
 		return dhPergunta;
 	}

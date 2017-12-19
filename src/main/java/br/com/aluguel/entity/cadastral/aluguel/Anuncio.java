@@ -51,6 +51,12 @@ public class Anuncio implements Serializable {
 
 	@Column(name = "vr_unitario", nullable=false)
 	private BigDecimal vrUnitario;
+	
+	@Column(name = "co_uf", nullable=false)
+	private String coUf;
+	
+	@Column(name = "co_municipio", nullable=false)
+	private String coMunicipio;
 
 	@JsonIgnore
 	@ManyToOne
@@ -122,6 +128,22 @@ public class Anuncio implements Serializable {
 
 	public void setVrUnitario(BigDecimal vrUnitario) {
 		this.vrUnitario = vrUnitario;
+	}
+
+	public String getCoUf() {
+		return coUf;
+	}
+
+	public void setCoUf(String coUf) {
+		this.coUf = coUf;
+	}
+
+	public String getCoMunicipio() {
+		return coMunicipio;
+	}
+
+	public void setCoMunicipio(String coMunicipio) {
+		this.coMunicipio = coMunicipio;
 	}
 
 	public Locador getLocador() {

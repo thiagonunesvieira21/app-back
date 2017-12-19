@@ -1,8 +1,6 @@
 package br.com.aluguel.servico.controller.cadastral;
 
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.NoResultException;
 import javax.servlet.http.HttpSession;
@@ -10,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.aluguel.entity.cadastral.aluguel.Atributo;
@@ -43,6 +43,26 @@ public class ImagemController extends UtilController {
 
     @Autowired
     private ImagemService service;
+    
+    @ApiOperation(value = "Serviço responsável por cadastrar a imagem do anuncio")
+    @ApiImplicitParam(paramType = "header", name = AUTH_HEADER_NAME, value = "API Key")
+    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @Secured({ "ROLE_MANTER_IMAGEM" })
+    public ResponseEntity<?> create(@RequestBody @Valid ImagemAnuncio model, BindingResult result) {
+
+        if (result.hasErrors()) {
+            throw new InvalidRequestException("Validação do cadastro de imagem", result);
+        }
+
+        Imagem imagem = new Imagem();
+        
+        imagem = prepareImagem(model, imagem);
+
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("msg", "Imagem criada com sucesso");
+        map.put("id", imagem.getId());
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
     
     @ApiOperation(value = "Serviço responsável por atualizar a imagem do anuncio")
     @ApiImplicitParam(paramType = "header", name = AUTH_HEADER_NAME, value = "API Key")
@@ -86,8 +106,8 @@ public class ImagemController extends UtilController {
     @ApiOperation(value = "Buscar imagens pelo ID do anuncio", response = Imagem.class, notes = "Retorna todas as imagens a partir do ID do anuncio especificado", responseContainer = "List")
     @ApiImplicitParam(paramType = "header", name = AUTH_HEADER_NAME, value = "API Key")
     @RequestMapping(value = "/anuncio/{idAnuncio}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Set<Imagem> getByIdProduto(@PathVariable Integer idAnuncio) {
-        return new HashSet<Imagem>(service.findByAnuncio(idAnuncio));
+    public Page<Imagem> getByIdProduto(@PathVariable Integer idAnuncio, @RequestParam("page") int page, @RequestParam("size") int size) {
+        return service.findByIdAnuncio(idAnuncio, page, size);
     }
 
     private Imagem prepareImagem(ImagemAnuncio model, Imagem imagem) {
