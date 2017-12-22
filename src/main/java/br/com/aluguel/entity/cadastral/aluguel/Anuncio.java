@@ -83,11 +83,11 @@ public class Anuncio implements Serializable {
 	private Integer idCategoria;
 	
 	@JsonIgnore
-  	@OneToMany(mappedBy = "produto", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+  	@OneToMany(mappedBy = "anuncio", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
 	private Set<Atributo> atributos;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "produto", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+	@OneToMany(mappedBy = "anuncio", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
 	private Set<Imagem> imagems;
 
 	public Integer getId() {

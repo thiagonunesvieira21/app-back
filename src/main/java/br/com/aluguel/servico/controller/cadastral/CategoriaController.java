@@ -1,8 +1,6 @@
 package br.com.aluguel.servico.controller.cadastral;
 
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.NoResultException;
 import javax.servlet.http.HttpSession;
@@ -10,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.aluguel.entity.cadastral.aluguel.Categoria;
@@ -46,7 +46,7 @@ public class CategoriaController extends UtilController {
     @ApiOperation(value = "Serviço responsável por cadastrar a categoria")
     @ApiImplicitParam(paramType = "header", name = AUTH_HEADER_NAME, value = "API Key")
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    @Secured({ "ROLE_MANTER_CATEGORIA" })
+//    @Secured({ "ROLE_MANTER_CATEGORIA" })
     public ResponseEntity<?> create(@RequestBody @Valid CadastrarCategoria model, BindingResult result) {
 
         if (result.hasErrors()) {
@@ -65,7 +65,7 @@ public class CategoriaController extends UtilController {
     @ApiOperation(value = "Serviço responsável por atualizar a categoria")
     @ApiImplicitParam(paramType = "header", name = AUTH_HEADER_NAME, value = "API Key")
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    @Secured({ "ROLE_MANTER_CATEGORIA" })
+//    @Secured({ "ROLE_MANTER_CATEGORIA" })
     public ResponseEntity<?> update(@RequestBody @Valid CadastrarCategoria model, @PathVariable Integer id,
                                     BindingResult result) {
 
@@ -90,8 +90,8 @@ public class CategoriaController extends UtilController {
     @ApiOperation(value = "Buscar todas as categorias", response = Categoria.class, notes = "Retorna todas as categorias cadastradas no sistema", responseContainer = "List")
     @ApiImplicitParam(paramType = "header", name = AUTH_HEADER_NAME, value = "API Key")
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Set<Categoria> getAll() {
-        return new HashSet<Categoria>(service.findAll());
+    public Page<Categoria> getAll(@RequestParam("page") int page, @RequestParam("size") int size) {
+        return service.findAll(page, size);
     }
 
     @ApiOperation(value = "Buscar categoria pelo ID", response = Categoria.class, notes = "Retorna a categoria a partir do ID especificado")
@@ -103,9 +103,9 @@ public class CategoriaController extends UtilController {
     
     @ApiOperation(value = "Buscar categoria pelo pai", response = Categoria.class, notes = "Retorna as categorias a partir do ID do pai especificado", responseContainer = "List")
     @ApiImplicitParam(paramType = "header", name = AUTH_HEADER_NAME, value = "API Key")
-    @RequestMapping(value = "/{idCategoriaPai}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Set<Categoria> getByIdCategoriaPai(@PathVariable Integer idCategoriaPai) {
-        return new HashSet<Categoria>(service.findByIdCategoriaPai(idCategoriaPai));
+    @RequestMapping(value = "/topParent/{idCategoriaPai}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Page<Categoria> getByIdCategoriaPai(@PathVariable Integer idCategoriaPai, @RequestParam("page") int page, @RequestParam("size") int size) {
+        return service.findByIdCategoriaPai(idCategoriaPai,page, size);
     }
 
     private Categoria prepareCategoria(CadastrarCategoria model, Categoria categoria) {
